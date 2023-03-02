@@ -1,6 +1,5 @@
 import os
 
-import cs50
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session, jsonify
 from flask_session import Session
@@ -12,7 +11,6 @@ import datetime
 
 import csv
 import sqlite3 as sql
-
 
 
 
@@ -30,11 +28,6 @@ Session(app)
 db = SQL("sqlite:///final.db")
 
 
-# Make sure API key is set
-#if not os.environ.get("API_KEY"):
- #   raise RuntimeError("API_KEY not set")
-
-
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -48,9 +41,11 @@ def after_request(response):
 @login_required
 def index():
     """Show main page"""
-    ## TODO Added location, likes. Now link (correct code in test2, but doesnt work in helpers)
-    ## TODO only download data of logged in user - NOT all data
     ## TODO see if it's easy to categorise individual vs organisation vs company twitter accounts
+    ## TODO ALLOW USER TO SET NUMBER OF TWEETS RETRIEVEED
+    ## TODO Make links hyperlinks
+     # Then build (individual vs. organisational) db
+    # Add My DBs Section, next to About and check if you can see history of tables you've created and whether you have access.
     user_id = session["user_id"]
     if request.method == "POST":
         keyword = request.form.get("keyword")
@@ -67,19 +62,15 @@ def index():
         return render_template("index.html")
 
 
-    # Then build (individual vs. organisational) db
-    # Add My DBs Section, next to About and check if you can see history of tables you've created and whether you have access.
-
-
-
 @app.route("/download")
 @login_required
 def download():
     # Export data into CSV file
+    user_id = session["user_id"]
     conn = sql.connect('final.db')
 
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM u_db")
+    cursor.execute("SELECT * FROM u_db WHERE id = %s" % user_id)
     with open("u_db_data.csv", "w") as csv_file:
         csv_writer = csv.writer(csv_file, delimiter="\t")
         csv_writer.writerow([i[0] for i in cursor.description])
@@ -100,14 +91,6 @@ def about():
 def mydata():
     user_id = session["user_id"]
     u_rows = db.execute("SELECT * FROM u_db WHERE id = ?", user_id)
-    conn = sql.connect('final.db')
-
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM u_db")
-    with open("u_db_data.csv", "w") as csv_file:
-        csv_writer = csv.writer(csv_file, delimiter="\t")
-        csv_writer.writerow([i[0] for i in cursor.description])
-        csv_writer.writerows(cursor)
 
     return render_template("mydata.html", u_rows = u_rows)
 

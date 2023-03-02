@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- https://memegen.link/ -->
+    <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thedenizen.co.nz%2Fetiquette%2Flesson-in-pronunciation%2F&psig=AOvVaw0wCsHAMKWy3mvqCboN9dXT&ust=1676108427382000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPjCltjUiv0CFQAAAAAdAAAAABAD" title="{{ top }}">
+{% endblock %}

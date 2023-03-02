@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+
+
+
+<h5 style="text-align: left;">tweets about "{{ keyword }}"</h5>
+                <table class="table table-striped" id="portf">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>User Description</th>
+                            <th>Location</th>
+                            <th>Tweet</th>
+                            <th>Date</th>
+                            <th>Retweets</th>
+                            <th>Likes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user[0] }}</td>
+                            <td>{{ user[1] }}</td>
+                            <td>{{ user[2] }}</td>
+                            <td>{{ user[3] }}</td>
+                            <td>{{ user[4] }}</td>
+                            <td>{{ user[5] }}</td>
+                            <td>{{ user[6] }}</td>
+
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+<form action="/download" class="mt-4 text-center">
+    <button class="btn btn-primary" name="btnI" type="submit">Generate SQL Database</button>
+</form>
+
+
+{% endblock %}

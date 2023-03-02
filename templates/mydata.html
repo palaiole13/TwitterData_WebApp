@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MyData
+{% endblock %}
+
+{% block main %}
+
+
+
+<h5 style="text-align: left;">SQL database of tweets about: "{{ u_rows[0]["keyword"] }}" </h5>
+                <table class="table table-striped" id="portf">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>User Description</th>
+                            <th>Location</th>
+                            <th>Tweet</th>
+                            <th>Date</th>
+                            <th>Retweets</th>
+                            <th>Likes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in u_rows %}
+                        <tr>
+                            <td>{{ row.username }}</td>
+                            <td>{{ row.user_description }}</td>
+                            <td>{{ row.location }}</td>
+                            <td>"{{ row.tweet }}"</td>
+                            <td>{{ row.date }}</td>
+                            <td>{{ row.retweets }}</td>
+                            <td>{{ row.likes }}</td>
+
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+
+{% endblock %}
+

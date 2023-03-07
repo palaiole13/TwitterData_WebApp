@@ -43,13 +43,13 @@ def index():
     """Show main page"""
     ## TODO see if it's easy to categorise individual vs organisation vs company twitter accounts
     ## TODO ALLOW USER TO SET NUMBER OF TWEETS RETRIEVEED
-    ## TODO Make links hyperlinks
      # Then build (individual vs. organisational) db
     # Add My DBs Section, next to About and check if you can see history of tables you've created and whether you have access.
     user_id = session["user_id"]
     if request.method == "POST":
         keyword = request.form.get("keyword")
-        rows = lookup(keyword)
+        limit = request.form.get("limit", type=int)
+        rows = lookup(keyword, limit)
         if rows == None:
             return apology("invalid keyword", 400)
         db.execute("DELETE FROM u_db WHERE id = ?", user_id)

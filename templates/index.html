@@ -8,14 +8,12 @@
 
 <div class="text-center">
 
-    <!--<img alt="Search" src="bird.jpeg"> -->
-
-    <form action="" class="mt-4" method="post"> <!--https://twitter.com/search-->
+    <form action="/" method="post"> 
         <input autocomplete="off" autofocus class="form-control form-control-lg mb-4 mx-auto w-50" id="keyword" name="keyword" placeholder="Search by keyword" type="text">
+        <input autocomplete="off" class="form-control form-control-sm mb-4 mx-auto w-50" id="limit" name="limit" placeholder="No of tweets" type="number" min="1">
         <button class="btn btn-primary" type="submit">Twitter Search</button>
     </form>
 
 </div>
 
 {% endblock %}
-

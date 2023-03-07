@@ -13,6 +13,8 @@ import urllib.parse
 from flask import redirect, render_template, request, session, jsonify
 from functools import wraps
 
+
+# return error  message
 def apology(message, code=400):
     """Render message as an apology to user."""
     def escape(s):
@@ -28,6 +30,7 @@ def apology(message, code=400):
     return render_template("apology.html", top=code, bottom=escape(message)), code
 
 
+# Require login
 def login_required(f):
     """
     Decorate routes to require login.
@@ -42,38 +45,27 @@ def login_required(f):
     return decorated_function
 
 
-# Read credentials
+## Twitter API
+# read credentials
 api_key = API_key_public
 api_key_secret = API_key_Secret
 access_token = Access_token
 access_token_secret = Access_token_secret
 
-# Authentication
+# authentication
 auth = tweepy.OAuthHandler(api_key, api_key_secret)
 auth.set_access_token(access_token, access_token_secret)
 api =tweepy.API(auth)
 
-'''
-def jsonify_tweepy(object):
-    for i in object:
-        json_str = json.dumps(i._json, indent = 2)
-    return json.loads(json_str)
-'''
-
+# tweets into json
 def jsonify_tweepy(object):
     json_str = json.dumps(object._json)
     return json.loads(json_str)
 
-
-#followers = list(tweepy.Cursor(api.followers).items())
-#followers_list = [jsonify_tweepy(follower) for follower in followers]
-
-keyword = 'offsets'
-limit = 10
-
-def lookup(keyword):
+# return relevant twitter variables
+def lookup(keyword, limit):
     try:
-        tweets = [tweet for tweet in tweepy.Cursor(api.search_tweets, q = {keyword}, result_type = "mixed").items(15)]
+        tweets = [tweet for tweet in tweepy.Cursor(api.search_tweets, q = {keyword}, result_type = "mixed").items(limit)]
         tweets_list = [jsonify_tweepy(tweet) for tweet in tweets]
         lst = []
         for item in tweets_list:
@@ -93,20 +85,3 @@ def lookup(keyword):
 
     except (KeyError, TypeError, ValueError):
         return None
-
-
-
-'''
-def lookup(keyword):
-    try:
-        tweets = [tweet for tweet in tweepy.Cursor(api.search_tweets, q = {keyword}, result_type = "mixed").items(limit)]
-        return {
-            "name": jsonify_tweepy(tweets)['user']['name'],
-            "description": jsonify_tweepy(tweets)['user']['description'],
-            "date": jsonify_tweepy(tweets)['created_at'],
-            "tweet": jsonify_tweepy(tweets)['text'],
-            "retweet_count": jsonify_tweepy(tweets)['retweet_count']
-        }
-    except (KeyError, TypeError, ValueError):
-        return None
-'''

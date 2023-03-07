@@ -6,9 +6,6 @@ from config import Access_token_secret
 
 import tweepy
 import json
-import os
-import requests
-import urllib.parse
 
 from flask import redirect, render_template, request, session, jsonify
 from functools import wraps

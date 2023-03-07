@@ -7,7 +7,6 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup
-import datetime
 
 import csv
 import sqlite3 as sql

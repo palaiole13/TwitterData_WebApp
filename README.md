@@ -21,9 +21,9 @@ pip install -r requirements.txt
 - templates/ : all HTML forms used in the app (page layout, registration, log in, results page, myData page)
 
 ## Twitter API:
-To run the app, the user must gain access to the Twitter API ([here's how](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)).
+To run the app, you must gain access to the Twitter API ([here's how](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)).
 
-Create a file called 'config.py' (or whatever suits you) inside the app folder and store the following values:
+Then, you should create a file called 'config.py' (or whatever suits you) inside the app folder and store the API keys and tokens:
 
 ```
 API_key_public          = "Your_API_key_public"
@@ -50,7 +50,7 @@ CREATE TABLE u_db (id INTEGER, username TEXT NOT NULL, user_description TEXT, tw
 ```
 You're ready to go.
 
-
-## Credits:
+#### Video Demo:  https://youtu.be/TbStthfpp6c
+### Credits:
 The initial version of this web app was submitted as my final project for Harvard's CS50 introduction to computer science. 
 I thank Professor Malan and his team for this fantastic journey and strongly recommend this course to anyone looking substantive, in-depth introduction to the art of programming. You can register [here](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x?utm_source=google&utm_campaign=19339199037&utm_medium=cpc&utm_term=harvard%20cs50%20online&hsa_acc=7245054034&hsa_cam=19339199037&hsa_grp=145482383700&hsa_ad=642397268536&hsa_src=g&hsa_tgt=kwd-422823376443&hsa_kw=harvard%20cs50%20online&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAiA3pugBhAwEiwAWFzwdVAWQLlh0fnX2npfXVe9L4TC4F7ls9-qmu0vqTjW8oj0ev27RWzasBoCWHEQAvD_BwE).

@@ -4,7 +4,7 @@
 Users must simply register to create an account and may then use the twitterData search engine, see their history under the MyData tab, as well as download their SQL database in .csv format.
 
 You can run the app by followng the steps below.
-#### Video Demo:  https://youtu.be/TbStthfpp6c
+
 #### Tech used:
 1. Python (Flask)
 2. SQLite
@@ -49,7 +49,7 @@ CREATE TABLE u_db (id INTEGER, username TEXT NOT NULL, user_description TEXT, tw
 , date DATETIME, retweets INTEGER, 'keyword' TEXT, 'likes' INTEGER, 'location' TEXT, FOREIGN KEY (id) REFERENCES users);
 ```
 You're ready to go.
-
+------------
 #### Video Demo:  https://youtu.be/TbStthfpp6c
 ### Credits:
 The initial version of this web app was submitted as my final project for Harvard's CS50 introduction to computer science. 

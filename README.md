@@ -49,8 +49,9 @@ CREATE TABLE u_db (id INTEGER, username TEXT NOT NULL, user_description TEXT, tw
 , date DATETIME, retweets INTEGER, 'keyword' TEXT, 'likes' INTEGER, 'location' TEXT, FOREIGN KEY (id) REFERENCES users);
 ```
 You're ready to go.
+   
 ------------
 #### Video Demo:  https://youtu.be/TbStthfpp6c
-### Credits:
+#### Credits:
 The initial version of this web app was submitted as my final project for Harvard's CS50 introduction to computer science. 
 I thank Professor Malan and his team for this fantastic journey and strongly recommend this course to anyone looking substantive, in-depth introduction to the art of programming. You can register [here](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x?utm_source=google&utm_campaign=19339199037&utm_medium=cpc&utm_term=harvard%20cs50%20online&hsa_acc=7245054034&hsa_cam=19339199037&hsa_grp=145482383700&hsa_ad=642397268536&hsa_src=g&hsa_tgt=kwd-422823376443&hsa_kw=harvard%20cs50%20online&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAiA3pugBhAwEiwAWFzwdVAWQLlh0fnX2npfXVe9L4TC4F7ls9-qmu0vqTjW8oj0ev27RWzasBoCWHEQAvD_BwE).

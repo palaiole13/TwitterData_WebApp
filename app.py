@@ -41,7 +41,9 @@ def after_request(response):
 def index():
     """Show main page"""
     ## TODO see if it's easy to categorise individual vs organisation vs company twitter accounts
-    # Add My DBs Section, next to About and check if you can see history of tables you've created and whether you have access.
+    ## Enrich My_DATA
+    ## Add history of searches
+    ## Download button next to each db
     user_id = session["user_id"]
     if request.method == "POST":
         keyword = request.form.get("keyword")

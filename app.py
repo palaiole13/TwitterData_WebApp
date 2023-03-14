@@ -41,9 +41,6 @@ def after_request(response):
 def index():
     """Show main page"""
     ## TODO see if it's easy to categorise individual vs organisation vs company twitter accounts
-    ## Enrich My_DATA
-    ## Add history of searches
-    ## Download button next to each db
     user_id = session["user_id"]
     if request.method == "POST":
         keyword = request.form.get("keyword")
